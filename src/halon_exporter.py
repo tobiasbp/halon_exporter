@@ -22,7 +22,7 @@ FAILED_API_REQUESTS = Gauge(
 )
 FAILED_API_REQUESTS.set_function(lambda: get_metrics())
 
-UP = Gauge("halon_up", "Halon is up", ["error"])
+UP = Gauge("halon_up", "Halon is up")
 
 CONFIG_REVISIONS = Gauge("halon_config_revisions", "Number of config revisions")
 
@@ -120,13 +120,13 @@ def get_metrics():
         e += get_info()
 
         # Halon is up
-        UP.labels("no-error").set(1)
+        UP.set(1)
 
         return e
 
-    except (ConnectionError) as e:
+    except (ConnectionError):
         # Halon is down
-        UP.labels(type(e).__name__).set(0)
+        UP.set(0)
 
 
 if __name__ == "__main__":

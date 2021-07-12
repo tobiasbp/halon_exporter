@@ -27,7 +27,7 @@ Metrics from halon.
 * `halon_license_status{halon_license_status="error"} VALUE`
 * `halon_system_uptime_seconds VALUE`
 * `halon_config_revisions VALUE`
-* `halon_up{error="*"} [0.0|1.0]`
+* `halon_up [0.0|1.0]`
 * `halon_http_errors VALUE`
 ## System
 Metrics from the exporter.

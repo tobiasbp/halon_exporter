@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from types import WrapperDescriptorType
 from halon_api import HalonAPI
 from prometheus_client import start_http_server, Info, Gauge, Enum
 from requests import ConnectionError, HTTPError
@@ -57,7 +56,7 @@ def count_errors(func):
             # This is the request to the Halon API
             func()
             return 0  # No error occured
-        except HTTPError as e:
+        except HTTPError:
             return 1  # An error occured
 
     return wrapper

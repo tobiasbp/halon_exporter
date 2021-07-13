@@ -10,10 +10,12 @@ import os
 halon_user = os.environ.get("HALON_USER", "user")
 halon_password = os.environ.get("HALON_PASSWORD", "password")
 halon_host = os.environ.get("HALON_HOST", "halon.example.com")
-halon_verify = os.environ.get("HALON_VERIFY", True)
+halon_verify = os.environ.get("HALON_VERIFY", "true")
+
+# Port exporter will listen on
 halon_exporter_port = os.environ.get("HALON_EXPORTER_PORT", 9838)
 
-# Converts strings false/true to Bools
+# Converts HALON_VERIFY to Bool if false/true
 if halon_verify.lower() == "false":
     halon_verify = False
 elif halon_verify.lower() == "true":

@@ -1,5 +1,5 @@
 # halon_exporter
-A prometheus exporter for the mail transport agent (MTA) [Halon](https://halon.io/).
+A [prometheus](https://prometheus.io/) exporter for the mail transport agent (MTA) [Halon](https://halon.io/).
 Built with [Promethus Python Client](https://github.com/prometheus/client_python).
 Exposed metrics are collected using the [Halon API](https://docs.halon.io/api/) using the
 PyPI package [halon-api](https://pypi.org/project/halon-api/).
@@ -16,8 +16,11 @@ Optionally, if you use your own CA, set `HALON_VERIFY` to the path to your CA_BU
 If you do not want to verify the certificate on the Halon server, you can
 set `HALON_VERIFY` to `False`.
 
+The default port for the exporter is 9838. You can set at different
+port with the environment variable `HALON_EXPORTER_PORT`.
+
 Run the exporter: `./halon_exporter`
-Then access the Halon metrics at `http://localhost:8000`
+Then access the Halon metrics at `http://localhost:9838`
 
 # Metrics
 The metrics exported.

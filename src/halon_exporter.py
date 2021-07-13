@@ -11,6 +11,7 @@ halon_user = os.environ.get("HALON_USER", "user")
 halon_password = os.environ.get("HALON_PASSWORD", "password")
 halon_host = os.environ.get("HALON_HOST", "halon.example.com")
 halon_verify = os.environ.get("HALON_VERIFY", True)
+halon_exporter_port = os.environ.get("HALON_EXPORTER_PORT", 9838)
 
 # Converts strings false/true to Bools
 if halon_verify.lower() == "false":
@@ -140,7 +141,7 @@ def get_metrics():
 
 if __name__ == "__main__":
     # Start up the server to expose the metrics.
-    start_http_server(8000)
+    start_http_server(int(halon_exporter_port))
 
     # Wait for requests
     while True:

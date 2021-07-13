@@ -10,8 +10,14 @@ Set the following environment variables:
 * `export HALON_PASSWORD='secret-password'`
 * `export HALON_HOST='halon.example.org'`
 
+Optionally, if you use your own CA, set `HALON_VERIFY` to the path to your CA_BUNDLE:
+* `export HALON_VERIFY='/my/ca_bundle.pem'`
+
+If you do not want to verify the certificate on the Halon server, you can
+set `HALON_VERIFY` to `False`.
+
 Run the exporter: `./halon_exporter`
-Access metrics at `http://localhost:8000`
+Then access the Halon metrics at `http://localhost:8000`
 
 # Metrics
 The metrics exported.

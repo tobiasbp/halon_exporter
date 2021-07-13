@@ -10,9 +10,16 @@ import os
 halon_user = os.environ.get("HALON_USER", "user")
 halon_password = os.environ.get("HALON_PASSWORD", "password")
 halon_host = os.environ.get("HALON_HOST", "halon.example.com")
+halon_verify = os.environ.get("HALON_VERIFY", True)
+
+# Converts strings false/true to Bools
+if halon_verify.lower() == "false":
+    halon_verify = False
+elif halon_verify.lower() == "true":
+    halon_verify = True
 
 # The Halon API
-h = HalonAPI(halon_host, halon_user, halon_password, verify_cert=False, port=443)
+h = HalonAPI(halon_host, halon_user, halon_password, verify=halon_verify)
 
 # This MUST be first declared metric. The other metrics are gathered as a side effect if
 # this metric's set function.
@@ -111,6 +118,7 @@ def get_system_newer_versions():
 def get_metrics():
     """Get the metrics. Report HTTP errors"""
     try:
+        # Count HTTP errors
         e = 0
         e += get_system_uptime()
         e += get_config_revisions()
@@ -122,6 +130,7 @@ def get_metrics():
         # Halon is up
         UP.set(1)
 
+        # The number of HTTP errors
         return e
 
     except (ConnectionError):

@@ -4,7 +4,8 @@ Built with [Promethus Python Client](https://github.com/prometheus/client_python
 Exposed metrics are collected using the [Halon API](https://docs.halon.io/api/) using the
 PyPI package [halon-api](https://pypi.org/project/halon-api/).
 
-# How to use
+# Configuration
+
 Set the following environment variables:
 * `export HALON_USER='halon-user'`
 * `export HALON_PASSWORD='secret-password'`
@@ -19,8 +20,15 @@ set `HALON_VERIFY` to `False`.
 The default port for the exporter is 9838. You can set at different
 port with the environment variable `HALON_EXPORTER_PORT`.
 
-Run the exporter: `./halon_exporter`
+# Running directly
+Run the exporter: `./halon_exporter.py`
 Then access the Halon metrics at `http://localhost:9838`
+
+# Running in Docker
+
+* Pull the image: `docker pull tobiasbp/halon-exporter:latest`
+* Run a container: `docker run --rm --env HALON_HOST=halon.example.org --env HALON_USER=halon-user --env HALON_PASSWORD=secret-password -p 9838:9838 tobiasbp/halon-exporter`
+* Access metrics at: `http://localhost:9838`
 
 # Metrics
 The metrics exported.

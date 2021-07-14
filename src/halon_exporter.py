@@ -6,13 +6,15 @@ from requests import ConnectionError, HTTPError
 
 import os
 
-# Halon credentials
-halon_user = os.environ.get("HALON_USER", "user")
-halon_password = os.environ.get("HALON_PASSWORD", "password")
-halon_host = os.environ.get("HALON_HOST", "halon.example.com")
+# Mandatory env variables
+halon_user = os.environ["HALON_USER"]
+halon_password = os.environ["HALON_PASSWORD"]
+halon_host = os.environ["HALON_HOST"]
+
+# Check certs by default
 halon_verify = os.environ.get("HALON_VERIFY", "true")
 
-# Port exporter will listen on
+# Default port exporter will listen on
 halon_exporter_port = os.environ.get("HALON_EXPORTER_PORT", 9838)
 
 # Converts HALON_VERIFY to Bool if false/true
@@ -24,8 +26,8 @@ elif halon_verify.lower() == "true":
 # The Halon API
 h = HalonAPI(halon_host, halon_user, halon_password, verify=halon_verify)
 
-# This MUST be first declared metric. The other metrics are gathered as a side effect if
-# this metric's set function.
+# This MUST be first declared metric. The other metrics are gathered as a
+# side effect of this metric's set function.
 FAILED_API_REQUESTS = Gauge(
     "halon_http_errors",
     "The number of request to the Halon API that returned an HTTP error code",

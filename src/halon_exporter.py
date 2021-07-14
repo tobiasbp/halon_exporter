@@ -5,6 +5,7 @@ from prometheus_client import start_http_server, Info, Gauge, Enum
 from requests import ConnectionError, HTTPError
 
 import os
+import time
 
 # Mandatory env variables
 halon_user = os.environ["HALON_USER"]
@@ -149,4 +150,4 @@ if __name__ == "__main__":
 
     # Wait for requests
     while True:
-        pass
+        time.sleep(30.0)

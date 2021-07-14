@@ -22,13 +22,13 @@ port with the environment variable `HALON_EXPORTER_PORT`.
 
 # Running directly
 Run the exporter: `./halon_exporter.py`
-Then access the Halon metrics at `http://localhost:9838`
+Then access the Halon metrics at `http://localhost:9838/metrics`
 
 # Running in Docker
 
 * Pull the image: `docker pull tobiasbp/halon-exporter:latest`
 * Run a container: `docker run --rm --env HALON_HOST=halon.example.org --env HALON_USER=halon-user --env HALON_PASSWORD=secret-password -p 9838:9838 tobiasbp/halon-exporter`
-* Access metrics at: `http://localhost:9838`
+* Access metrics at: `http://localhost:9838/metrics`
 
 # Metrics
 The metrics exported.

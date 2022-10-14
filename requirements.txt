@@ -1,2 +1,2 @@
 halon-api==0.0.6
-prometheus-client==0.14.1
+prometheus-client==0.15.0
